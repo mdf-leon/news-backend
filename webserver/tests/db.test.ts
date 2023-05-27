@@ -1,20 +1,20 @@
-import { App } from "../index";
+import Webserver from "../Webserver";
 import connection from "../../db";
 import mongoose from "mongoose";
 
 describe("App database connection", () => {
-  let app: App;
+  let app: Webserver;
 
   beforeAll(async () => {
-    app = new App();
+    app = new Webserver();
     await mongoose.connection.readyState; // Wait for MongoDB to be connected
   });
 
-  afterAll(async () => { 
-    await app.closeApp(); 
+  afterAll(async () => {
+    await app.shutdownWebserver();
   });
 
-  it("should establish a PostgreSQL database connection", async () => { 
+  it("should establish a PostgreSQL database connection", async () => {
     try {
       const result = await connection.raw("SELECT 1");
       expect(result.rows.length).toBeGreaterThan(0);

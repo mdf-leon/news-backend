@@ -1,13 +1,13 @@
 import { Router, Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import Article from "../entities/Article";
-import User from "../entities/User";
+import Article from "../models/Article";
+import User from "../models/User";
 import checkAuthentication from "../middleware/authMiddleware";
-import Tag from "../entities/Tag";
+import Tag from "../models/Tag";
 
 const router = Router();
-
-// Get all articles
+ 
+// Get all articles 
 router.get("/", async (req: Request, res: Response) => {
   try {
     const articles = await Article.getAll();

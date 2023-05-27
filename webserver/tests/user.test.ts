@@ -1,18 +1,18 @@
 import request from "supertest";
 
-import { App } from "../index";
-import User from "../entities/User";
+import Webserver from "../Webserver";
+import User from "../models/User";
 
 describe("User router", () => {
-  let app: App;
+  let app: Webserver;
 
   beforeAll(async () => {
-    app = new App();
+    app = new Webserver();
     await app.executeApp();
   });
 
   afterAll(async () => {
-    await app.closeApp();
+    await app.shutdownWebserver();
     // Remove all the users created during the tests
     // await User.deleteMany({});
   });
@@ -49,9 +49,9 @@ describe("User router", () => {
         email: "existinguser@b.c",
         password: "secret",
       };
-      
+
       await User.create(user);
-      
+
       const response = await request(app.getAppServer())
         .post("/api/user/login")
         .send(user);
