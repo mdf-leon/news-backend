@@ -1,4 +1,4 @@
-import { Webserver } from "../index";
+import Webserver from "../Webserver";
 import connection from "../../db";
 import mongoose from "mongoose";
 
@@ -10,11 +10,11 @@ describe("App database connection", () => {
     await mongoose.connection.readyState; // Wait for MongoDB to be connected
   });
 
-  afterAll(async () => { 
-    await app.shutdownWebserver(); 
+  afterAll(async () => {
+    await app.shutdownWebserver();
   });
 
-  it("should establish a PostgreSQL database connection", async () => { 
+  it("should establish a PostgreSQL database connection", async () => {
     try {
       const result = await connection.raw("SELECT 1");
       expect(result.rows.length).toBeGreaterThan(0);

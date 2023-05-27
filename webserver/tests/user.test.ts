@@ -1,6 +1,6 @@
 import request from "supertest";
 
-import { Webserver } from "../index";
+import Webserver from "../Webserver";
 import User from "../models/User";
 
 describe("User router", () => {
@@ -49,9 +49,9 @@ describe("User router", () => {
         email: "existinguser@b.c",
         password: "secret",
       };
-      
+
       await User.create(user);
-      
+
       const response = await request(app.getAppServer())
         .post("/api/user/login")
         .send(user);
