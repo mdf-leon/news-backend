@@ -1,3 +1,9 @@
-import { start as MagicWebserver } from './webserver/index'
+import { start as MagicWebserver, shutdown } from './webserver/index'
 
-MagicWebserver() // starts your magic webserver
+async function main() {
+  const webserver = MagicWebserver() // starts your magic webserver  
+
+  // await shutdown(webserver) 
+}
+
+main()

@@ -2,7 +2,7 @@ import { Router, Request, Response } from "express";
 import * as jwt from "jsonwebtoken";
 import { compare, hash } from "bcrypt";
 import connection from "../../db";
-import User from "../entities/User";
+import User from "../models/User";
 import checkAuthentication from "../middleware/authMiddleware"; 
 
 const router = Router();

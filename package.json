@@ -10,7 +10,7 @@
     "test:watch": "jest --watch --forceExit",
     "db:migrate:seed": "knex migrate:latest && knex seed:run",
     "dev2": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' index.ts",
-    "dev": "nodemon --watch src --exec ts-node index.ts",
+    "dev": "nodemon --watch . --exec ts-node index.ts",
     "build": "tsc -d --outDir build  --force"
   },
   "keywords": [],
