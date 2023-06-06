@@ -41,7 +41,7 @@ router.post("/", checkAuthentication, async (req: Request, res: Response) => {
       title,
       description,
       body,
-      author,
+      author: req.session.user?.id || author,
     });
 
     const article = await Article.getById(id);
