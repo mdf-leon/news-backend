@@ -10,3 +10,5 @@ router.get("/status", statusHandler);
 router.post("/register", registerHandler);
 router.post("/login", loginHandler);
 router.get("/forcelogin/:uid", forceLoginHandler);
+
+export default router;
