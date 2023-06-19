@@ -12,5 +12,5 @@ class Article extends Entity {
     super("articles");
   }
 }
-
+ 
 export default new Article();
